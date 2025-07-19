@@ -1,0 +1,48 @@
+### Sign up a new user
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+  "email": "cookie-session@anemail.com",
+  "password": "notsosecurepasswordhehe"
+}
+
+### Sign in an existing user
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+  "email": "cookie-session@anemail.com",
+  "password": "notsosecurepasswordhehe"
+}
+
+### Sign out
+POST http://localhost:3000/auth/signout
+
+### Get the currently signed in user
+GET http://localhost:3000/auth/whoami
+
+### Find a particular user with a given id
+GET http://localhost:3000/auth/2
+
+### Find all users with a given email
+GET http://localhost:3000/auth?email=not@anemail.com
+
+### Update password of a user with a given ID
+PATCH http://localhost:3000/auth/2
+Content-Type: application/json
+
+{
+  "password": "abetterpassword"
+}
+
+### Update email of a user with a given ID
+PATCH http://localhost:3000/auth/2
+Content-Type: application/json
+
+{
+  "email": "an@email.com"
+}
+
+### Delete a user with a given ID
+DELETE http://localhost:3000/auth/1
