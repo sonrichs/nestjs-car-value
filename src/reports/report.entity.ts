@@ -6,6 +6,11 @@ export class Report {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({
+    default: false
+  })
+  approved: boolean;
+
   @Column()
   make: string;
 
@@ -27,6 +32,6 @@ export class Report {
   @Column()
   price: number;
 
-  @ManyToOne(() => User, (user) => user.reports)
+  @ManyToOne(() => User, (user) => user.reports, { eager: true })
   user: User;
 }
