@@ -20,12 +20,29 @@ describe('Authentication system (e2e)', () => {
     const email = 'myunique1@mail.com';
     return request(app.getHttpServer())
       .post('/auth/signup')
-      .send({email, password: 'password'})
+      .send({ email, password: 'password' })
       .expect(201)
       .then((res) => {
-        const { id, email } = res.body;
-        expect(id).toBeDefined();
-        expect(email).toEqual(email);
+        expect(res.body.id).toBeDefined();
+        expect(res.body.email).toEqual(email);
       });
   });
+
+  it('signup as a new user then get the currently logged in user', async () => {
+    const email = 'mycurrentlyloggedin@user.com'
+    const password = 'password'
+    const res = await request(app.getHttpServer())
+      .post('/auth/signup')
+      .send({ email, password })
+      .expect(201);
+
+    const cookie = res.get('Set-Cookie') as string[];
+
+    const {body} = await request(app.getHttpServer())
+      .get('/auth/whoami')
+      .set('Cookie', cookie)
+      .expect(200);
+      
+    expect(body.email).toEqual(email);
+  })
 });
