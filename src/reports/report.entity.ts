@@ -4,10 +4,25 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 export class Report {
   @PrimaryGeneratedColumn()
   id: number;
+
   @Column()
   make: string;
+
   @Column()
-  mileage: string;
+  model: string;
+
+  @Column()
+  year: number;
+
+  @Column()
+  lng: number;
+
+  @Column()
+  lat: number;
+
+  @Column()
+  mileage: number;
+
   @Column()
   price: number;
 }
