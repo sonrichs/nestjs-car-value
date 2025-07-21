@@ -3,7 +3,7 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-  "email": "cookie-session1@anemail.com",
+  "email": "admin@user.com",
   "password": "notsosecurepasswordhehe"
 }
 
@@ -12,7 +12,7 @@ POST http://localhost:3000/auth/signin
 Content-Type: application/json
 
 {
-  "email": "cookie-session@anemail.com",
+  "email": "admin@user.com",
   "password": "notsosecurepasswordhehe"
 }
 

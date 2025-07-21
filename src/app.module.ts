@@ -28,12 +28,6 @@ const cookieSession = require('cookie-session');
         }
       }
     }),
-    // TypeOrmModule.forRoot({
-    //   type: 'sqlite',
-    //   database: 'db.sqlite',
-    //   entities: [User, Report],
-    //   synchronize: true,
-    // }),
     UsersModule,
     ReportsModule,
     AuthModule
@@ -44,7 +38,13 @@ const cookieSession = require('cookie-session');
     {
       provide: APP_PIPE,
       useValue: new ValidationPipe({
+        transform: true,
+        transformOptions: {
+          enableImplicitConversion: true // this will allow us
+          // to remove @Transform decorator on primitive types and Serializable types
+        },
         whitelist: true,
+        stopAtFirstError: false
       }),
     }
   ],

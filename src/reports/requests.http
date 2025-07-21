@@ -13,9 +13,15 @@ Content-Type: application/json
 }
 
 ### Approve an existing report
-PATCH http://localhost:3000/reports/10
+PATCH http://localhost:3000/reports/11
 Content-Type: application/json
 
 {
-  "approved": true
+  "approved": false
 }
+
+### Get an estimate for a vehicle
+GET http://localhost:3000/reports?make=toyota&model=corolla&lng=0&lat=0&mileage=20000&year=1980
+
+### Delete a report
+DELETE http://localhost:3000/reports/1
