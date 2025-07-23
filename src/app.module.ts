@@ -9,8 +9,8 @@ import { ReportsModule } from './reports/reports.module';
 // import { Report } from './reports/report.entity';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmConfigService } from '../src/config/typeorm.config.service';
 const cookieSession = require('cookie-session');
-import { AppDataSource } from '../ormconfig';
 
 @Module({
   imports: [
@@ -18,7 +18,10 @@ import { AppDataSource } from '../ormconfig';
       isGlobal: true,
       envFilePath: `.env.${process.env.NODE_ENV}`
     }),
-    TypeOrmModule.forRoot(AppDataSource.options),
+    TypeOrmModule.forRootAsync({
+      useClass: TypeOrmConfigService,
+      // imports: [ConfigModule],
+    }),
     UsersModule,
     ReportsModule,
     AuthModule
