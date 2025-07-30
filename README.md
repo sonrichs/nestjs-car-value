@@ -1,3 +1,13 @@
+Simple car price evaluation API that supports the following functionalities:
+- User registration, session management and log in.
+- Reports submitions for logged in users
+- Car price valuation based on reports.
+
+Technologies used:
+- NestJS
+- TypeORM
+- SQL
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
